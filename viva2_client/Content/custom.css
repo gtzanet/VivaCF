@@ -1,0 +1,317 @@
+﻿
+.narrow {
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+img {
+    margin-top:30px; 
+}
+
+.col-md-6 > div > img{
+    margin:30px 0;
+    width:350px;
+    height:350px; 
+}
+
+.amount {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0;
+}
+
+.cropTxt {
+    display: block; 
+    display: -webkit-box;
+    height: 60px;
+    margin: 0 auto;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cropHeader
+{
+    display: block; 
+    display: -webkit-box;
+    height: 40px;
+    margin-bottom: 5px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.progress.custom{
+    margin-bottom: 10px;
+}
+
+.btn-group.custom
+{
+    width:100%;
+}
+
+.btn.medium
+{
+    width:50%;
+}
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
+
+.info .col-md-6{
+    color: #a8a8a8;
+    font-size: 11px;
+    padding:0;
+}
+.info {
+    color: #a8a8a8;
+    font-size: 11px;
+    padding:0;
+}
+
+
+.col-md-3.custom:hover{
+    cursor:pointer;
+    -webkit-box-shadow:inset 0px 0px 0px 1px #a8a8a8;
+    -moz-box-shadow:inset 0px 0px 0px 1px #a8a8a8;
+    box-shadow:inset 0px 0px 0px 1px #a8a8a8;
+}
+
+.category{
+    position:absolute;
+    left:0px;
+    top:10px;
+    font-size:1.5em;
+}
+
+.categories{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.categories a,
+.categories button
+{
+    width:100%;
+}
+
+.categories .dropdown-menu{
+     width:90%;
+}
+
+.dropdownheader{
+    visibility: hidden;
+    //text-indent: -9999px;
+}
+
+.dropdownheader.appear{
+    visibility: initial;
+    text-indent: 1px;
+}
+
+.tab-pane.custom{
+    padding:10px;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;   
+}
+
+.backers
+{
+    border: 1px solid #dddddd;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.backers:hover
+{
+    background-color:#2a6496;
+    color:#dddddd;
+    font-size:1.1em;
+}
+
+.backers span
+{
+    display:block;
+}
+
+.backerButton{
+    bottom: 0;
+    position: absolute;
+    width: 95%;
+    border-top:1px dotted #333333;
+}
+
+.backerButton a, .backerButton .input-group{
+    margin-top:10px;
+}
+
+.bold{
+    font-weight:bold;
+}
+
+.col-md-2 > div
+{
+   padding: 7px 0;
+}
+
+.photos{
+    //background-color:#dddddd; //gkri
+}
+
+.input-group > input{
+    max-width:none;
+}
+
+.glyphicon {
+    top:0;
+}
+
+.input-group-lg > textarea.form-control 
+{
+    height:300px;
+}
+
+.savedImg {
+    width:30px;
+    margin-left:30px;
+    margin-top:inherit;
+}
+
+.loadingImg{
+    width:84px;
+     margin-top:inherit;
+}
+
+.changed
+{
+    background-color:#ffecb3; //kitrino
+}
+
+.rewards
+{
+    padding: 5px;
+    margin: inherit;
+    border-radius: 5px;
+}
+
+.reward{
+    border: 1px solid #dddddd;
+    margin: 2px;
+    padding: 5px;
+    border-radius: 5px;
+    overflow:hidden;
+    position: relative;
+    height: 300px;
+}
+
+.reward:hover
+{
+    background-color:#2a6496;
+    color:#dddddd;
+    font-size:1.1em;
+    cursor:pointer;
+}
+
+
+.reward p{
+    font-size:12px;
+
+    display: block; 
+    display: -webkit-box;
+    height: 85px;
+    margin: 0 auto;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+span.rewardPrice
+{
+    font-size: 50px;
+    text-align: center;
+    
+    float: left;
+    clear:left;
+    width:100%;
+}
+
+span.rewardsMore
+{
+    font-size: 20px;
+    text-align: center;
+
+    float: left;
+    clear:left;
+    width:100%;
+}
+
+span.rewardsCurrency
+{
+    font-size: 20px;
+    text-align: center;
+
+    float: left;
+    clear:left;
+    width:100%;
+}
+
+
+.icon{
+    display:-webkit-box;
+    overflow:hidden;
+    z-index:100;
+}
+
+.icon:before{
+  content:"\e124";
+  font-family:"Glyphicons Halflings";
+  line-height:.7;
+  margin:10px;
+  display:inline-block;
+  font-size: 150px;
+  transition: transform 2s;
+
+}
+
+.icon:hover,
+.reward:hover .icon
+{  
+    transform: scale(1.5);
+    color:white;
+    z-index:100;
+}
+
+.price
+{
+    display: block;
+    width: 151px;
+    left: -161px;
+    position: relative;
+    top: 25px;
+    height: 95px;
+    line-height: 1;
+    color: white;
+}
+.price:hover
+, .reward:hover .price {
+    color:#333333;
+    font-weight:bold;
+}
+
+.customRewardIcon{
+    position: absolute;
+}
+
+.img-responsive.noMargins
+{
+    margin:0;
+}

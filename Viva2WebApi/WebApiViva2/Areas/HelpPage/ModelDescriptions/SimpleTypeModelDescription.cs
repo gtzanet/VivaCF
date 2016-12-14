@@ -1,0 +1,6 @@
+namespace WebApiViva2.Areas.HelpPage.ModelDescriptions
+{
+    public class SimpleTypeModelDescription : ModelDescription
+    {
+    }
+}

@@ -1,0 +1,728 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DreamFountainDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Backers">
+          <Key>
+            <PropertyRef Name="Backer_ID" />
+          </Key>
+          <Property Name="Backer_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="Project_ID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="DateCreated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Category_ID" />
+          </Key>
+          <Property Name="Category_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Country_ID" />
+          </Key>
+          <Property Name="Country_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="Currency_ID" />
+          </Key>
+          <Property Name="Currency_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Symbol" Type="nvarchar" MaxLength="5" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Image_ID" />
+          </Key>
+          <Property Name="Image_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Project_ID" Type="int" Nullable="false" />
+          <Property Name="ContentType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Data" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="Project_ID" />
+          </Key>
+          <Property Name="Project_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="Category_ID" Type="int" Nullable="false" />
+          <Property Name="Subcategory_ID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country_ID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ImagePath" Type="nvarchar(max)" />
+          <Property Name="Video" Type="nvarchar(max)" />
+          <Property Name="FundingDuration" Type="int" />
+          <Property Name="FundingGoal" Type="money" />
+          <Property Name="Currency_ID" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateActivated" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Funded" Type="bit" />
+        </EntityType>
+        <EntityType Name="Rewards">
+          <Key>
+            <PropertyRef Name="Reward_ID" />
+          </Key>
+          <Property Name="Reward_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Project_ID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="MinAmount" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="MaxAmount" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="DateCreated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SubCategories">
+          <Key>
+            <PropertyRef Name="SubCategory_ID" />
+          </Key>
+          <Property Name="SubCategory_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Category_ID" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Trusted" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="ActivatedAccount" Type="bit" />
+          <Property Name="DeletedAccount" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DreamFountainDB.dbo.uvw_ProjectDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="uvw_ProjectDetails">
+          <Key>
+            <PropertyRef Name="Project_ID" />
+            <PropertyRef Name="AmmountFunded" />
+          </Key>
+          <Property Name="Project_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RemainingTime" Type="int" />
+          <Property Name="AmmountFunded" Type="numeric" Precision="38" Scale="2" Nullable="false" />
+          <Property Name="PercentageFunded" Type="nvarchar" MaxLength="11" />
+          <Property Name="Backers" Type="int" />
+        </EntityType>
+        <Association Name="FK__Backers__Project__48CFD27E">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Backers" Type="Self.Backers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Project_ID" />
+            </Principal>
+            <Dependent Role="Backers">
+              <PropertyRef Name="Project_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Backers__User_ID__49C3F6B7">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Backers" Type="Self.Backers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Backers">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Projects__Catego__5629CD9C">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Category_ID" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Projects__Countr__628FA481">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Country_ID" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="Country_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Projects__Curren__6383C8BA">
+          <End Role="Currencies" Type="Self.Currencies" Multiplicity="0..1" />
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currencies">
+              <PropertyRef Name="Currency_ID" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="Currency_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Projects__Subcat__619B8048">
+          <End Role="SubCategories" Type="Self.SubCategories" Multiplicity="0..1" />
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategories">
+              <PropertyRef Name="SubCategory_ID" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="Subcategory_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="img_project_id">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Project_ID" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="Project_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="project_id">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
+          <End Role="Rewards" Type="Self.Rewards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Project_ID" />
+            </Principal>
+            <Dependent Role="Rewards">
+              <PropertyRef Name="Project_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DreamFountainDBModelStoreContainer">
+          <EntitySet Name="Backers" EntityType="Self.Backers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rewards" EntityType="Self.Rewards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategories" EntityType="Self.SubCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uvw_ProjectDetails" EntityType="Self.uvw_ProjectDetails" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [uvw_ProjectDetails].[Project_ID] AS [Project_ID], 
+    [uvw_ProjectDetails].[RemainingTime] AS [RemainingTime], 
+    [uvw_ProjectDetails].[AmmountFunded] AS [AmmountFunded], 
+    [uvw_ProjectDetails].[PercentageFunded] AS [PercentageFunded], 
+    [uvw_ProjectDetails].[Backers] AS [Backers]
+    FROM [dbo].[uvw_ProjectDetails] AS [uvw_ProjectDetails]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Backers__Project__48CFD27E" Association="Self.FK__Backers__Project__48CFD27E">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Backers" EntitySet="Backers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Backers__User_ID__49C3F6B7" Association="Self.FK__Backers__User_ID__49C3F6B7">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Backers" EntitySet="Backers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Projects__Catego__5629CD9C" Association="Self.FK__Projects__Catego__5629CD9C">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Projects__Countr__628FA481" Association="Self.FK__Projects__Countr__628FA481">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Projects__Curren__6383C8BA" Association="Self.FK__Projects__Curren__6383C8BA">
+            <End Role="Currencies" EntitySet="Currencies" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Projects__Subcat__619B8048" Association="Self.FK__Projects__Subcat__619B8048">
+            <End Role="SubCategories" EntitySet="SubCategories" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="img_project_id" Association="Self.img_project_id">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="project_id" Association="Self.project_id">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Rewards" EntitySet="Rewards" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DreamFountainDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Category_ID" />
+          </Key>
+          <Property Name="Category_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Projects" Relationship="DreamFountainDBModel.FK__Projects__Catego__5629CD9C" FromRole="Categories" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Country_ID" />
+          </Key>
+          <Property Name="Country_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Projects" Relationship="DreamFountainDBModel.FK__Projects__Countr__628FA481" FromRole="Countries" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="Currency_ID" />
+          </Key>
+          <Property Name="Currency_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Symbol" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Projects" Relationship="DreamFountainDBModel.FK__Projects__Curren__6383C8BA" FromRole="Currencies" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="Project_ID" />
+          </Key>
+          <Property Name="Project_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="Category_ID" Type="Int32" Nullable="false" />
+          <Property Name="Subcategory_ID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country_ID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Video" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FundingDuration" Type="Int32" />
+          <Property Name="FundingGoal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Currency_ID" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Funded" Type="Boolean" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateActivated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Categories" Relationship="DreamFountainDBModel.FK__Projects__Catego__5629CD9C" FromRole="Projects" ToRole="Categories" />
+          <NavigationProperty Name="Countries" Relationship="DreamFountainDBModel.FK__Projects__Countr__628FA481" FromRole="Projects" ToRole="Countries" />
+          <NavigationProperty Name="Currencies" Relationship="DreamFountainDBModel.FK__Projects__Curren__6383C8BA" FromRole="Projects" ToRole="Currencies" />
+          <NavigationProperty Name="SubCategories" Relationship="DreamFountainDBModel.FK__Projects__Subcat__619B8048" FromRole="Projects" ToRole="SubCategories" />
+          <NavigationProperty Name="Backers" Relationship="DreamFountainDBModel.FK__Backers__Project__05D8E0BE" FromRole="Projects" ToRole="Backers" />
+          <NavigationProperty Name="Rewards" Relationship="DreamFountainDBModel.project_id" FromRole="Projects" ToRole="Rewards" />
+          <NavigationProperty Name="Images" Relationship="DreamFountainDBModel.img_project_id" FromRole="Projects" ToRole="Images" />
+        </EntityType>
+        <EntityType Name="SubCategories">
+          <Key>
+            <PropertyRef Name="SubCategory_ID" />
+          </Key>
+          <Property Name="SubCategory_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Category_ID" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Projects" Relationship="DreamFountainDBModel.FK__Projects__Subcat__619B8048" FromRole="SubCategories" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Trusted" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="ActivatedAccount" Type="Boolean" />
+          <Property Name="DeletedAccount" Type="Boolean" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Backers" Relationship="DreamFountainDBModel.FK__Backers__User_ID__04E4BC85" FromRole="Users" ToRole="Backers" />
+        </EntityType>
+        <EntityContainer Name="DreamFountainDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" />
+          <EntitySet Name="Currencies" EntityType="Self.Currencies" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" />
+          <EntitySet Name="SubCategories" EntityType="Self.SubCategories" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="uvw_ProjectDetails" EntityType="DreamFountainDBModel.uvw_ProjectDetails" />
+          <EntitySet Name="Backers" EntityType="DreamFountainDBModel.Backers" />
+          <EntitySet Name="sysdiagrams" EntityType="DreamFountainDBModel.sysdiagrams" />
+          <AssociationSet Name="FK__Projects__Catego__5629CD9C" Association="DreamFountainDBModel.FK__Projects__Catego__5629CD9C">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Projects__Countr__628FA481" Association="DreamFountainDBModel.FK__Projects__Countr__628FA481">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Projects__Curren__6383C8BA" Association="DreamFountainDBModel.FK__Projects__Curren__6383C8BA">
+            <End Role="Currencies" EntitySet="Currencies" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Projects__Subcat__619B8048" Association="DreamFountainDBModel.FK__Projects__Subcat__619B8048">
+            <End Role="SubCategories" EntitySet="SubCategories" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Backers__Project__05D8E0BE" Association="DreamFountainDBModel.FK__Backers__Project__05D8E0BE">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Backers" EntitySet="Backers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Backers__User_ID__04E4BC85" Association="DreamFountainDBModel.FK__Backers__User_ID__04E4BC85">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Backers" EntitySet="Backers" />
+          </AssociationSet>
+          <EntitySet Name="Rewards" EntityType="DreamFountainDBModel.Rewards" />
+          <AssociationSet Name="project_id" Association="DreamFountainDBModel.project_id">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Rewards" EntitySet="Rewards" />
+          </AssociationSet>
+          <EntitySet Name="Images" EntityType="DreamFountainDBModel.Images" />
+          <AssociationSet Name="img_project_id" Association="DreamFountainDBModel.img_project_id">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="uvw_ProjectDetails">
+          <Key>
+            <PropertyRef Name="Project_ID" />
+            <PropertyRef Name="AmmountFunded" />
+          </Key>
+          <Property Name="Project_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RemainingTime" Type="Int32" />
+          <Property Name="PercentageFunded" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Backers" Type="Int32" />
+          <Property Name="AmmountFunded" Type="Decimal" Nullable="false" Precision="38" Scale="2" />
+        </EntityType>
+        <EntityType Name="Backers">
+          <Key>
+            <PropertyRef Name="Backer_ID" />
+          </Key>
+          <Property Name="Backer_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="Project_ID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Projects" Relationship="DreamFountainDBModel.FK__Backers__Project__05D8E0BE" FromRole="Backers" ToRole="Projects" />
+          <NavigationProperty Name="Users" Relationship="DreamFountainDBModel.FK__Backers__User_ID__04E4BC85" FromRole="Backers" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__Projects__Catego__5629CD9C">
+          <End Type="DreamFountainDBModel.Categories" Role="Categories" Multiplicity="1" />
+          <End Type="DreamFountainDBModel.Projects" Role="Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Category_ID" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Projects__Countr__628FA481">
+          <End Type="DreamFountainDBModel.Countries" Role="Countries" Multiplicity="1" />
+          <End Type="DreamFountainDBModel.Projects" Role="Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Country_ID" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="Country_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Projects__Curren__6383C8BA">
+          <End Type="DreamFountainDBModel.Currencies" Role="Currencies" Multiplicity="0..1" />
+          <End Type="DreamFountainDBModel.Projects" Role="Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currencies">
+              <PropertyRef Name="Currency_ID" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="Currency_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Projects__Subcat__619B8048">
+          <End Type="DreamFountainDBModel.SubCategories" Role="SubCategories" Multiplicity="0..1" />
+          <End Type="DreamFountainDBModel.Projects" Role="Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategories">
+              <PropertyRef Name="SubCategory_ID" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="Subcategory_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Backers__Project__05D8E0BE">
+          <End Type="DreamFountainDBModel.Projects" Role="Projects" Multiplicity="1" />
+          <End Type="DreamFountainDBModel.Backers" Role="Backers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Project_ID" />
+            </Principal>
+            <Dependent Role="Backers">
+              <PropertyRef Name="Project_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Backers__User_ID__04E4BC85">
+          <End Type="DreamFountainDBModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="DreamFountainDBModel.Backers" Role="Backers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Backers">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Rewards">
+          <Key>
+            <PropertyRef Name="Reward_ID" />
+          </Key>
+          <Property Name="Reward_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Project_ID" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MinAmount" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="MaxAmount" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Projects" Relationship="DreamFountainDBModel.project_id" FromRole="Rewards" ToRole="Projects" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="project_id">
+          <End Type="DreamFountainDBModel.Projects" Role="Projects" Multiplicity="0..1" />
+          <End Type="DreamFountainDBModel.Rewards" Role="Rewards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Project_ID" />
+            </Principal>
+            <Dependent Role="Rewards">
+              <PropertyRef Name="Project_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Image_ID" />
+          </Key>
+          <Property Name="Image_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Project_ID" Type="Int32" Nullable="false" />
+          <Property Name="ContentType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Data" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Projects" Relationship="DreamFountainDBModel.img_project_id" FromRole="Images" ToRole="Projects" />
+        </EntityType>
+        <Association Name="img_project_id">
+          <End Type="DreamFountainDBModel.Projects" Role="Projects" Multiplicity="1" />
+          <End Type="DreamFountainDBModel.Images" Role="Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Project_ID" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="Project_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DreamFountainDBModelStoreContainer" CdmEntityContainer="DreamFountainDBEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="DreamFountainDBModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="DreamFountainDBModel.Countries">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="DreamFountainDBModel.Currencies">
+              <MappingFragment StoreEntitySet="Currencies">
+                <ScalarProperty Name="Currency_ID" ColumnName="Currency_ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="DreamFountainDBModel.Projects">
+              <MappingFragment StoreEntitySet="Projects">
+                <ScalarProperty Name="DateActivated" ColumnName="DateActivated" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+                <ScalarProperty Name="Subcategory_ID" ColumnName="Subcategory_ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="FundingDuration" ColumnName="FundingDuration" />
+                <ScalarProperty Name="FundingGoal" ColumnName="FundingGoal" />
+                <ScalarProperty Name="Currency_ID" ColumnName="Currency_ID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Funded" ColumnName="Funded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="DreamFountainDBModel.SubCategories">
+              <MappingFragment StoreEntitySet="SubCategories">
+                <ScalarProperty Name="SubCategory_ID" ColumnName="SubCategory_ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DreamFountainDBModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Trusted" ColumnName="Trusted" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ActivatedAccount" ColumnName="ActivatedAccount" />
+                <ScalarProperty Name="DeletedAccount" ColumnName="DeletedAccount" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uvw_ProjectDetails">
+            <EntityTypeMapping TypeName="DreamFountainDBModel.uvw_ProjectDetails">
+              <MappingFragment StoreEntitySet="uvw_ProjectDetails">
+                <ScalarProperty Name="AmmountFunded" ColumnName="AmmountFunded" />
+                <ScalarProperty Name="Backers" ColumnName="Backers" />
+                <ScalarProperty Name="PercentageFunded" ColumnName="PercentageFunded" />
+                <ScalarProperty Name="RemainingTime" ColumnName="RemainingTime" />
+                <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Backers">
+            <EntityTypeMapping TypeName="DreamFountainDBModel.Backers">
+              <MappingFragment StoreEntitySet="Backers">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Backer_ID" ColumnName="Backer_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DreamFountainDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rewards">
+            <EntityTypeMapping TypeName="DreamFountainDBModel.Rewards">
+              <MappingFragment StoreEntitySet="Rewards">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="MaxAmount" ColumnName="MaxAmount" />
+                <ScalarProperty Name="MinAmount" ColumnName="MinAmount" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+                <ScalarProperty Name="Reward_ID" ColumnName="Reward_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="DreamFountainDBModel.Images">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+                <ScalarProperty Name="Image_ID" ColumnName="Image_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

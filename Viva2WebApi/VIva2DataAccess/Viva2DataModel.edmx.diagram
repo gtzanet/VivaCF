@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a55746c85a4c4ee2b30db33688eec789" Name="Diagram1">
+        <EntityTypeShape EntityType="DreamFountainDBModel.Categories" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DreamFountainDBModel.Countries" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DreamFountainDBModel.Currencies" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DreamFountainDBModel.Projects" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DreamFountainDBModel.SubCategories" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DreamFountainDBModel.Users" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DreamFountainDBModel.uvw_ProjectDetails" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DreamFountainDBModel.Backers" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="DreamFountainDBModel.sysdiagrams" Width="1.5" PointX="5.375" PointY="7.75" />
+        <AssociationConnector Association="DreamFountainDBModel.FK__Projects__Catego__5629CD9C" />
+        <AssociationConnector Association="DreamFountainDBModel.FK__Projects__Countr__628FA481" />
+        <AssociationConnector Association="DreamFountainDBModel.FK__Projects__Curren__6383C8BA" />
+        <AssociationConnector Association="DreamFountainDBModel.FK__Projects__Subcat__619B8048" />
+        <AssociationConnector Association="DreamFountainDBModel.FK__Backers__Project__05D8E0BE" />
+        <AssociationConnector Association="DreamFountainDBModel.FK__Backers__User_ID__04E4BC85" />
+        <EntityTypeShape EntityType="DreamFountainDBModel.Rewards" Width="1.5" PointX="0.75" PointY="6.5" />
+        <AssociationConnector Association="DreamFountainDBModel.project_id" />
+        <EntityTypeShape EntityType="DreamFountainDBModel.Images" Width="1.5" PointX="1.25" PointY="9.5" />
+        <AssociationConnector Association="DreamFountainDBModel.img_project_id" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
